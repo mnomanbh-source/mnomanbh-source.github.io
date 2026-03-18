@@ -1,43 +1,57 @@
-/* Production Variables */
+/* Production Variables - Midnight & Crimson Theme */
 :root {
-    --primary-red: #D31011;
-    --dark-bg: #121416;
-    --gray-text: #6c757d;
+    --primary-red: #990000; /* Deep Dark Red */
+    --accent-red: #cc0000;
+    --deep-black: #0a0a0a;  /* Pure Dark Black */
+    --card-black: #151515;  /* Slightly lighter black for cards */
+    --text-white: #ffffff;
+    --text-secondary: #a0a0a0;
 }
 
 /* Global Reset */
 body {
     font-family: 'Inter', sans-serif;
-    color: #333;
+    color: var(--text-white);
+    background-color: var(--deep-black);
     overflow-x: hidden;
 }
 
 .fw-800 { font-weight: 800; }
 
+/* Top Bar */
+.top-bar {
+    background-color: #000;
+    border-bottom: 1px solid #222;
+}
+
 /* Navigation Styling */
 .navbar {
-    border-bottom: 3px solid var(--primary-red);
+    background-color: rgba(10, 10, 10, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--primary-red);
     padding: 15px 0;
 }
 
 .nav-link {
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--text-white) !important;
+    transition: 0.3s;
 }
 
-/* Hero Section with Industrial Feel */
+.nav-link:hover {
+    color: var(--primary-red) !important;
+}
+
+/* Hero Section */
 .hero-section {
     height: 90vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55)), url('images/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.65)), url('images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-}
-
-.hero-section h1 {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Service Cards */
@@ -49,71 +63,83 @@ body {
 }
 
 .service-card {
-    border: none;
-    border-radius: 12px;
-    background: #fff;
+    border: 1px solid #222;
+    border-radius: 0; /* Industrial sharp corners */
+    background: var(--card-black);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-    top: 0;
 }
 
 .service-card:hover {
-    top: -10px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+    border-color: var(--primary-red);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(153, 0, 0, 0.2) !important;
 }
 
 .card-img-wrapper {
     overflow: hidden;
     height: 220px;
+    position: relative;
+}
+
+.card-img-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, var(--card-black), transparent);
 }
 
 .service-card img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.service-card:hover img {
-    transform: scale(1.1);
-}
-
-.service-card h4 {
-    color: var(--dark-bg);
-    margin-bottom: 10px;
 }
 
 /* WhatsApp Floating Button */
 .whatsapp-float {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 30px;
+    right: 30px;
     background-color: #25d366;
     color: #FFF;
     border-radius: 50px;
     text-align: center;
-    font-size: 32px;
-    width: 65px;
-    height: 65px;
-    line-height: 65px;
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
     z-index: 1000;
-    box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    transition: 0.3s;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(10deg);
     color: white;
 }
 
-/* Responsive Adjustments */
+/* Buttons */
+.btn-danger {
+    background-color: var(--primary-red);
+    border: none;
+    border-radius: 0;
+    transition: 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: var(--accent-red);
+}
+
+/* Footer */
+.footer {
+    background-color: #050505;
+    border-top: 3px solid var(--primary-red);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .hero-section {
         height: auto;
-        padding: 120px 0;
+        padding: 100px 0;
         text-align: center;
-    }
-    .hero-section .d-flex {
-        justify-content: center;
     }
 }
